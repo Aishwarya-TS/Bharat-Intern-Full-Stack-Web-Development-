@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>User Registration</h1>
+  <form action="/register" method="POST" onsubmit="return validateForm()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br>
+    <span id="usernameError" class="error"></span><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+    <span id="emailError" class="error"></span><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+    <span id="passwordError" class="error"></span><br>
+
+    <input type="submit" value="Register">
+  </form>
+
+  <script>
+    function validateForm() {
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      document.getElementById('usernameError').innerHTML = '';
+      document.getElementById('emailError').innerHTML = '';
+      document.getElementById('passwordError').innerHTML = '';
+
+      // Simple validation example (You can customize as needed)
+      if (username.trim() === '') {
+        document.getElementById('usernameError').innerHTML = 'Please enter a username';
+        return false;
+      }
+
+      if (email.trim() === '') {
+        document.getElementById('emailError').innerHTML = 'Please enter an email';
+        return false;
+      }
+
+      if (password.trim().length < 6) {
+        document.getElementById('passwordError').innerHTML = 'Password must be at least 6 characters';
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
